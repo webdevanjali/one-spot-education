@@ -137,6 +137,17 @@ Route::resource('announcements', AnnouncementController::class);
 // Communication routes
 Route::resource('communications', CommunicationController::class);
 
+
+
+
+
+
+
+
+
+
+
+
 // Final routes
 
 // Admin Routes
@@ -145,9 +156,6 @@ Route::group(['prefix' => 'admin', 'middleware' => 'admin'], function () {
     Route::resource('users', UserController::class);
     Route::resource('reports', ReportController::class);
 });
-
-// Course Routes
-Route::resource('courses', CourseController::class);
 
 // Assignment Routes
 Route::resource('assignments', AssignmentController::class);
@@ -175,3 +183,57 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+
+
+
+
+
+// Controller related routes
+// Attendance Routes
+Route::get('attendance', [AttendanceController::class, 'index'])->name('attendance.index');
+Route::get('attendance/mark', [AttendanceController::class, 'mark'])->name('attendance.mark');
+Route::get('attendance/report', [AttendanceController::class, 'report'])->name('attendance.report');
+
+// Performance Routes
+Route::get('performance/analysis', [PerformanceController::class, 'analysis'])->name('performance.analysis');
+Route::get('performance/reports', [PerformanceController::class, 'reports'])->name('performance.reports');
+
+// Notification Routes
+Route::resource('notifications', NotificationController::class);
+
+// Setting Routes
+Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+
+// Profile Routes
+Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
+
+// Admin Routes
+Route::prefix('admin')->group(function () {
+    Route::get('dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('reports/generate', [AdminController::class, 'generateReport'])->name('admin.reports.generate');
+    Route::resource('events', EventController::class);
+    Route::resource('media-gallery', MediaController::class);
+    Route::resource('student-groups', GroupController::class);
+    Route::resource('feedback', FeedbackController::class);
+    Route::resource('reports', ReportController::class);
+    Route::resource('task-assignments', TaskController::class);
+    Route::resource('resource-links', ResourceLinkController::class);
+    Route::resource('file-uploads', FileUploadController::class);
+    Route::resource('qualification-proofs', QualificationProofController::class);
+    Route::resource('schedules', ScheduleController::class);
+    Route::resource('assessments', AssessmentController::class);
+    Route::resource('evaluations', EvaluationController::class);
+    Route::resource('classrooms', ClassroomController::class);
+    Route::resource('invoices', InvoiceController::class);
+});
+
+// Teacher Routes
+Route::get('teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+
+// Student Routes
+Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+
