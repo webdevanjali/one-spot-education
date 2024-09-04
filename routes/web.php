@@ -237,3 +237,10 @@ Route::get('teacher/dashboard', [TeacherController::class, 'dashboard'])->name('
 // Student Routes
 Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
 
+
+
+
+
+
+
+
