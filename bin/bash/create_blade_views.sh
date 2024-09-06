@@ -146,3 +146,19 @@ resources/views/teacher:
 dashboard.blade.php
 
 '
+
+
+
+
+: ' Below are some tracked  async changes
+    resources/views/admin/reports
+        resources/views/admin/reports/create.blade.php renamed to resources/views/admin/reports/generate.blade.php
+        missing/added resources/views/admin/reports/edit.blade.php
+        missing/added resources/views/admin/reports/show.blade.php
+
+    resources/views/admin/task-assignments
+        index.blade.php
+        edit.blade.php
+        create.blade.php
+        show.blade.php
+'

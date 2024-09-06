@@ -1,11 +1,12 @@
-<!-- resources/views/admin/reports/generate.blade.php -->
+<!-- 28. resources/views/admin/announcements/create.blade.php -->
+
 @extends('layouts.admin')
 
-@section('title', 'Create Report')
+@section('title', 'Create Announcement')
 
 @section('content')
-    <h1>Create Report</h1>
-    <form action="{{ route('reports.store') }}" method="POST">
+    <h1>Create Announcement</h1>
+    <form action="{{ route('announcements.store') }}" method="POST">
         @csrf
         <div class="form-group">
             <label for="title">Title</label>
@@ -15,6 +16,6 @@
             <label for="content">Content</label>
             <textarea id="content" name="content" class="form-control" rows="5" required></textarea>
         </div>
-        <button type="submit" class="btn btn-primary">Create Report</button>
+        <button type="submit" class="btn btn-primary">Create Announcement</button>
     </form>
 @endsection

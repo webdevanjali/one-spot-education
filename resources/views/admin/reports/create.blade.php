@@ -1,4 +1,4 @@
-<!-- resources/views/admin/reports/generate.blade.php -->
+<!-- resources/views/admin/reports/create.blade.php -->
 @extends('layouts.admin')
 
 @section('title', 'Create Report')
