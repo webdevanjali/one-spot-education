@@ -702,7 +702,7 @@
 
 <footer>
     <p>&copy; {{ date('Y') }} OneSpot Education. All rights reserved.</p>
-</footer>
+</footer>   
 
 36. resources/views/partials/messages.blade.php
 
