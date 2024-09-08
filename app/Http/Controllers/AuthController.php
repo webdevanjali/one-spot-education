@@ -23,8 +23,25 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         
         if (Auth::attempt($credentials)) {
-            // Authentication passed
-            return redirect()->intended('home');
+            $user = Auth::user();
+            
+            // Determine the dashboard URL based on user role
+            switch ($user->role) {
+                case 'admin':
+                    $redirectUrl = '/admin/dashboard';
+                    break;
+                case 'teacher':
+                    $redirectUrl = '/teacher/dashboard';
+                    break;
+                case 'student':
+                    $redirectUrl = '/student/dashboard';
+                    break;
+                default:
+                    $redirectUrl = '/home'; // Fallback URL
+                    break;
+            }
+            
+            return redirect()->intended($redirectUrl);
         }
         
         return back()->withErrors([

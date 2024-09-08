@@ -88,15 +88,21 @@ Route::get('settings', [SettingController::class, 'index'])->name('settings.inde
 // Profile routes
 Route::get('profile', [ProfileController::class, 'index'])->name('profile.index');
 
-// Admin routes
-Route::get('admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
-Route::get('admin/reports/generate', [AdminController::class, 'generateReport'])->name('admin.reports.generate');
+// Admin Routes
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('admin/reports/generate', [AdminController::class, 'generateReport'])->name('admin.reports.generate');
+});
 
-// Teacher routes
-Route::get('teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+// Teacher Routes
+Route::middleware(['auth', 'role:teacher'])->group(function () {
+    Route::get('teacher/dashboard', [TeacherController::class, 'dashboard'])->name('teacher.dashboard');
+});
 
-// Student routes
-Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+// Student Routes
+Route::middleware(['auth', 'role:student'])->group(function () {
+    Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('student.dashboard');
+});
 
 // Event routes
 Route::resource('events', EventController::class);

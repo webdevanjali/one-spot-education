@@ -237,7 +237,7 @@
 </style>
 </head>
 <body>
-<!-- <form class="form"  method="POST" action="{{ url('login') }}" onsubmit="return false" autocomplete="off"> -->
+<!--  <form class="form"  method="POST" action="{{ url('login') }}" onsubmit="return false" autocomplete="off"> -->
 <form class="form"  method="POST" action="{{ url('login') }}" autocomplete="off">
     @csrf   
     <div class="form-inner">
