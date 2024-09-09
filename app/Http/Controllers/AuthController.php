@@ -21,12 +21,34 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
-        
+    
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-            
-            // Determine the dashboard URL based on user role
-            switch ($user->role) {
+        
+        // Reload the roles relationship to ensure it's up-to-date
+        $user->load('roles');
+
+        // Debugging: Check roles and role names
+        // dump('User:', $user);
+        // dump('user->Roles:', $user->roles);
+        // dump('user-role-pluck-Role Names:', $user->roles->pluck('role_name'));
+
+        // Fetch the user's roles
+        $roles = $user->roles->pluck('role_name');
+
+        // Determine the dashboard URL based on user role
+        $roleName = $roles->first() ?? 'guest'; // Default to 'guest' if no roles assigned
+
+        // Debugging: Output role names for checking
+        // dump('Role Name:', $roleName);
+        // dump('Roles:', $roles);
+
+        // Halt execution and stop further code execution
+        // dd('Debugging complete, stopping execution.');
+
+
+    
+            switch (strtolower($roleName)) {
                 case 'admin':
                     $redirectUrl = '/admin/dashboard';
                     break;
@@ -40,14 +62,14 @@ class AuthController extends Controller
                     $redirectUrl = '/home'; // Fallback URL
                     break;
             }
-            
+    
             return redirect()->intended($redirectUrl);
         }
-        
-        return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
-        ]);
+    
+        // Handle failed login
+        return redirect()->back()->withErrors(['email' => 'Invalid credentials.']);
     }
+    
     
     // Show the registration form
     public function showRegisterForm()

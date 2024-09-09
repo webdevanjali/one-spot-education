@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class FileUpload extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'file_name', 'file_path', 'uploaded_by',
+    ];
+
+    public function uploader()
+    {
+        return $this->belongsTo(User::class, 'uploaded_by');
+    }
 }

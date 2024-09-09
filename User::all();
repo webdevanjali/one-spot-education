@@ -1,0 +1,33 @@
+[90m= [39m[34;4mIlluminate\Database\Eloquent\Collection[39;24m {#6236
+    [34mall[39m: [
+      [34;4mApp\Models\Role[39;24m {#6237
+        [34mrole_id[39m: [35m1[39m,
+        [34mrole_name[39m: "[32madmin[39m",
+        [34mrole_description[39m: "[32mAdministrator[39m",
+        [34mcreated_at[39m: "[32m2024-09-04 18:38:25[39m",
+        [34mupdated_at[39m: "[32m2024-09-04 18:38:25[39m",
+      },
+      [34;4mApp\Models\Role[39;24m {#6238
+        [34mrole_id[39m: [35m2[39m,
+        [34mrole_name[39m: "[32mteacher[39m",
+        [34mrole_description[39m: "[32mTeacher[39m",
+        [34mcreated_at[39m: "[32m2024-09-04 18:38:25[39m",
+        [34mupdated_at[39m: "[32m2024-09-04 18:38:25[39m",
+      },
+      [34;4mApp\Models\Role[39;24m {#6239
+        [34mrole_id[39m: [35m3[39m,
+        [34mrole_name[39m: "[32msutdent[39m",
+        [34mrole_description[39m: "[32mStudent[39m",
+        [34mcreated_at[39m: "[32m2024-09-04 18:38:25[39m",
+        [34mupdated_at[39m: "[32m2024-09-04 18:38:25[39m",
+      },
+      [34;4mApp\Models\Role[39;24m {#6240
+        [34mrole_id[39m: [35m4[39m,
+        [34mrole_name[39m: "[32muser[39m",
+        [34mrole_description[39m: "[32mRegular User[39m",
+        [34mcreated_at[39m: "[32m2024-09-04 18:38:25[39m",
+        [34mupdated_at[39m: "[32m2024-09-04 18:38:25[39m",
+      },
+    ],
+  }
+

@@ -67,14 +67,14 @@ trait InteractsWithDockerComposeServices
 
         // Prepare the installation of the "mariadb-client" package if the MariaDB service is used...
         if (in_array('mariadb', $services)) {
-            $compose['services']['laravel.test']['build']['args']['MYSQL_CLIENT'] = 'mariadb-client';
+            $compose['services']['student-management']['build']['args']['MYSQL_CLIENT'] = 'mariadb-client';
         }
 
-        // Adds the new services as dependencies of the laravel.test service...
-        if (! array_key_exists('laravel.test', $compose['services'])) {
-            $this->warn('Couldn\'t find the laravel.test service. Make sure you add ['.implode(',', $services).'] to the depends_on config.');
+        // Adds the new services as dependencies of the student-management service...
+        if (! array_key_exists('student-management', $compose['services'])) {
+            $this->warn('Couldn\'t find the student-management service. Make sure you add ['.implode(',', $services).'] to the depends_on config.');
         } else {
-            $compose['services']['laravel.test']['depends_on'] = collect($compose['services']['laravel.test']['depends_on'] ?? [])
+            $compose['services']['student-management']['depends_on'] = collect($compose['services']['student-management']['depends_on'] ?? [])
                 ->merge($services)
                 ->unique()
                 ->values()
@@ -83,9 +83,9 @@ trait InteractsWithDockerComposeServices
 
         // Update the dependencies if the MariaDB service is used...
         if (in_array('mariadb', $services)) {
-            $compose['services']['laravel.test']['depends_on'] = array_map(function ($dependedItem) {
+            $compose['services']['student-management']['depends_on'] = array_map(function ($dependedItem) {
                 return $dependedItem;
-            }, $compose['services']['laravel.test']['depends_on']);
+            }, $compose['services']['student-management']['depends_on']);
         }
 
         // Add the services to the docker-compose.yml...

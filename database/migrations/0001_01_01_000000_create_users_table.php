@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('email')->unique(); // Unique email address
             $table->timestamp('email_verified_at')->nullable(); // Email verification timestamp
             $table->string('password'); // Encrypted password
-            $table->string('user_type')->default('student'); // Default user type
+            // $table->foreignId('role_id')->constrained('roles')->onDelete('cascade');
+            $table->foreignId('user_type')->references('role_name')->on('roles')->default('student'); // Default user type
             $table->string('phone_number')->nullable(); // Optional phone number
             $table->string('address')->nullable(); // Optional address
             $table->string('address_line_2')->nullable(); // Second address line (if needed)

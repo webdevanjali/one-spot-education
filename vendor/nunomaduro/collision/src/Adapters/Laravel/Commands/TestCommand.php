@@ -281,7 +281,7 @@ class TestCommand extends Command
         );
 
         if (! $paraTestOptions->configuration->hasCoverageCacheDirectory()) {
-            $cacheDirectory = sys_get_temp_dir().DIRECTORY_SEPARATOR.'__laravel_test_cache_directory';
+            $cacheDirectory = sys_get_temp_dir().DIRECTORY_SEPARATOR.'__student-management_cache_directory';
             $options[] = '--cache-directory';
             $options[] = $cacheDirectory;
         }

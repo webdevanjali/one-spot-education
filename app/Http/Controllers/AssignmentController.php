@@ -49,9 +49,16 @@ class AssignmentController extends Controller
         return redirect()->route('assignments.index');
     }
 
+    // public function show($id)
+    // {
+    //     $assignment = Assignment::findOrFail($id);
+    //     return view('modules.assignments.show', compact('assignment'));
+    // }
+
+    // AssignmentController.php
     public function show($id)
     {
-        $assignment = Assignment::findOrFail($id);
+        $assignment = Assignment::with('attachments')->findOrFail($id);
         return view('modules.assignments.show', compact('assignment'));
     }
 }

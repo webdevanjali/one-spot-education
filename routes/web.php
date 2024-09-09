@@ -55,9 +55,14 @@ Route::middleware(['role:admin'])->group(function () {
 });
 
 // Home route
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/welcome', [HomeController::class, 'welcome'])->name('welcome');
-
+    // Route::get('/', [HomeController::class, 'index'])->name('home');
+    // Route::get('/welcome', [HomeController::class, 'welcome'])->name('welcome');
+Route::get('/', function () {
+    return view('home');
+})->name('home');
+Route::get('/welcome', function () {
+    return view('welcome');
+})->name('welcome');
 // User routes
 Route::resource('users', UserController::class);
 
@@ -186,9 +191,7 @@ Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 // Dashboard Routes 
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 
 

@@ -8,4 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class QualificationProof extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'user_id', 'file_name', 'file_path',
+    ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

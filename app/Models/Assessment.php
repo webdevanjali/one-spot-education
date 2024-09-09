@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class Assessment extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'title', 'description', 'course_id', 'due_date',
+    ];
+
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
+
+    public function submissions()
+    {
+        return $this->hasMany(Submission::class);
+    }
 }
