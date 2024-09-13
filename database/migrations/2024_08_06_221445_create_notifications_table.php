@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('notifications', function (Blueprint $table) {
             $table->id('notification_id');
             $table->foreignId('user_id')->constrained('users');
+            $table->string('title'); // Add this line for the title column
             $table->text('message');
             $table->boolean('read_status')->default(false);
             $table->string('notification_type', 50)->nullable(); // e.g., 'Alert', 'Reminder'

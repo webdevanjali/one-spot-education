@@ -5,20 +5,39 @@
 @section('title', 'Edit Course')
 
 @section('content')
-    <h1>Edit Course</h1>
-    <form action="{{ route('courses.update', $course->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" id="title" name="title" class="form-control" value="{{ $course->title }}" required>
-        </div>
-
-
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea id="description" name="description" class="form-control" rows="5" required>{{ $course->description }}</textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Update Course</button>
-    </form>
+<div class="container">
+    <h1>Course Details</h1>
+    <table class="table table-bordered">
+        <tr>
+            <th>Course Name</th>
+            <td>{{ $course->course_name }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ $course->description }}</td>
+        </tr>
+        <tr>
+            <th>Teacher ID</th>
+            <td>{{ $course->teacher_id }}</td>
+        </tr>
+        <tr>
+            <th>Start Date</th>
+            <td>{{ $course->start_date }}</td>
+        </tr>
+        <tr>
+            <th>End Date</th>
+            <td>{{ $course->end_date }}</td>
+        </tr>
+        <tr>
+            <th>Course Schedule</th>
+            <td>{{ $course->course_schedule }}</td>
+        </tr>
+        <tr>
+            <th>Cover Image</th>
+            <td>{{ $course->cover_image }}</td>
+        </tr>
+    </table>
+    <a href="{{ route('courses.edit', $course->id) }}" class="btn btn-warning">Edit</a>
+    <a href="{{ route('courses.index') }}" class="btn btn-secondary">Back</a>
+</div>
 @endsection

@@ -10,21 +10,22 @@ class Feedback extends Model
     use HasFactory;
 
     protected $fillable = [
-        'feedback_text', 'given_by', 'received_by', 'course_id',
+        'user_id', 'sender_name', 'sender_email', 'student_id', 'teacher_id', 'course_id', 'feedback_text', 'rating', 'media'
     ];
 
+    // Relationships
     public function giver()
     {
-        return $this->belongsTo(User::class, 'given_by');
-    }
-
-    public function receiver()
-    {
-        return $this->belongsTo(User::class, 'received_by');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function course()
     {
         return $this->belongsTo(Course::class);
+    }
+
+    public function teacher()
+    {
+        return $this->belongsTo(User::class, 'teacher_id');
     }
 }

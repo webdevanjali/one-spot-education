@@ -10,8 +10,15 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\NotificationController;
 // use App\Http\Controllers\UserController;
 // use App\Http\Controllers\ReportController;
-use App\Http\Controllers\DashboardController;
+// use App\Http\Controllers\DashboardController;
+// use App\Http\Controllers\AuthController;
+
 use App\Http\Controllers\{
+    ClassroomController,
+    EvaluationController,
+    InvoiceController,
+    AuthController,
+    DashboardController,
     UserController,
     CourseController,
     LiveClassController,
@@ -38,7 +45,6 @@ use App\Http\Controllers\{
     AnnouncementController,
     CommunicationController
 };
-use App\Http\Controllers\AuthController;
 
 // routes for login, registration, and logout
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
@@ -86,6 +92,15 @@ Route::get('performance/reports', [PerformanceController::class, 'reports'])->na
 
 // Notification routes
 Route::resource('notifications', NotificationController::class);
+    //  With the above routes defined, you can access them using:
+        // List Notifications: GET /notifications
+        // Create Notification: GET /notifications/create
+        // Store Notification: POST /notifications
+        // Show Notification: GET /notifications/{id}
+        // Edit Notification: GET /notifications/{id}/edit
+        // Update Notification: PUT/PATCH /notifications/{id}
+        // Destroy Notification: DELETE /notifications/{id}
+    // By using Route::resource, Laravel streamlines the process of setting up CRUD operations for your resources, adhering to RESTful conventions.
 
 // Setting routes
 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
@@ -120,7 +135,7 @@ Route::resource('student-groups', GroupController::class);
 
 // Feedback routes
 Route::resource('feedback', FeedbackController::class);
-
+Route::post('/feedback', [FeedbackController::class, 'store'])->name('feedback.store');
 // Report routes
 Route::resource('reports', ReportController::class);
 
@@ -149,6 +164,14 @@ Route::resource('announcements', AnnouncementController::class);
 Route::resource('communications', CommunicationController::class);
 
 
+
+
+
+
+// temporary route for debugging purposes to print out the session data:
+Route::get('/debug-session', function () {
+    return session()->all();
+});
 
 
 
@@ -182,9 +205,6 @@ Route::get('attendance/report', [AttendanceController::class, 'report'])->name('
 Route::get('performance/analysis', [PerformanceController::class, 'analysis'])->name('performance.analysis');
 Route::get('performance/reports', [PerformanceController::class, 'reports'])->name('performance.reports');
 
-// Notification Routes
-Route::resource('notifications', NotificationController::class);
-
 // User Routes
 Route::get('profile', [UserController::class, 'profile'])->name('user.profile');
 
@@ -213,6 +233,8 @@ Route::get('performance/reports', [PerformanceController::class, 'reports'])->na
 
 // Notification Routes
 Route::resource('notifications', NotificationController::class);
+// Route::get('notifications/{notification}', [NotificationController::class, 'show'])->name('notifications.show');
+Route::get('notifications/{notification_id}/edit', [NotificationController::class, 'edit'])->name('notifications.edit');
 
 // Setting Routes
 Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
@@ -227,7 +249,6 @@ Route::prefix('admin')->group(function () {
     Route::resource('events', EventController::class);
     Route::resource('media-gallery', MediaController::class);
     Route::resource('student-groups', GroupController::class);
-    Route::resource('feedback', FeedbackController::class);
     Route::resource('reports', ReportController::class);
     Route::resource('task-assignments', TaskController::class);
     Route::resource('resource-links', ResourceLinkController::class);
@@ -248,6 +269,18 @@ Route::get('student/dashboard', [StudentController::class, 'dashboard'])->name('
 
 
 
+
+// routes/web.php
+Route::get('/faqs', function () {
+    return view('modules.faqs');
+})->name('faqs');
+
+
+// routes/web.php
+Route::get('courses/{course}', [CourseController::class, 'show'])->name('courses.show');
+
+// routes/web.php
+Route::resource('courses', CourseController::class);
 
 
 

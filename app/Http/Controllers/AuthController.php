@@ -14,6 +14,35 @@ class AuthController extends Controller
     // Show the login form
     public function showLoginForm()
     {
+        // Redirect to home if already authenticated
+        if (Auth::check()) {
+            // return redirect('/');
+
+                $user = Auth::user();
+            
+                $user->load('roles');
+                $roles = $user->roles->pluck('role_name');
+                $userType = $roles->first(); // Default to 'guest' if no roles assigned
+                // dd($userType);
+                switch (strtolower($userType)) {
+                    case 'admin':
+                        $redirectUrl = '/admin/dashboard';
+                        break;
+                    case 'teacher':
+                        $redirectUrl = '/teacher/dashboard';
+                        break;
+                    case 'student':
+                        $redirectUrl = '/student/dashboard';
+                        break;
+                    default:
+                        $redirectUrl = '/'; // Fallback URL
+                        break;
+                }
+        
+                return redirect()->intended($redirectUrl);
+            
+                
+        }
         return view('auth.login');
     }
     
@@ -25,27 +54,27 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
         
-        // Reload the roles relationship to ensure it's up-to-date
-        $user->load('roles');
+            // Reload the roles relationship to ensure it's up-to-date
+            $user->load('roles');
 
-        // Debugging: Check roles and role names
-        // dump('User:', $user);
-        // dump('user->Roles:', $user->roles);
-        // dump('user-role-pluck-Role Names:', $user->roles->pluck('role_name'));
+            // Debugging: Check roles and role names
+            // dump('User:', $user);
+            // dump('user->Roles:', $user->roles);
+            // dump('user-role-pluck-Role Names:', $user->roles->pluck('role_name'));
 
-        // Fetch the user's roles
-        $roles = $user->roles->pluck('role_name');
+            // Fetch the user's roles
+            $roles = $user->roles->pluck('role_name');
 
-        // Determine the dashboard URL based on user role
-        $roleName = $roles->first() ?? 'guest'; // Default to 'guest' if no roles assigned
+            // Determine the dashboard URL based on user role
+            $roleName = $roles->first() ?? 'guest'; // Default to 'guest' if no roles assigned
 
-        // Debugging: Output role names for checking
-        // dump('Role Name:', $roleName);
-        // dump('Roles:', $roles);
+            //add the user role in session;
+            session(['user_role' => $roleName]);
 
-        // Halt execution and stop further code execution
-        // dd('Debugging complete, stopping execution.');
 
+
+            // dd(Auth::user()->roles->pluck('role_name')->first());
+       
 
     
             switch (strtolower($roleName)) {
