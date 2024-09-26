@@ -101,9 +101,8 @@
                 @endif
         </div>
     @else
-        <!-- Include a default navigation or any other content for guests -->
-        <!-- @include('partials.navigation.guest_nav') -->
-        <div style="padding-block:5%;">
+
+    <div style="padding-block:5%;">
             @yield('content')
         </div>
 

@@ -1,7 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Student Login</title>
+@extends('layouts.app')
+    @section('title', 'Student Login')
+    @push('head-css')
     <style>
         @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
 
@@ -251,8 +250,8 @@
         margin-bottom: 1rem;
     }
     </style>
-</head>
-<body>
+    @endpush
+    @section('content')
 <!--  <form class="form"  method="POST" action="{{ url('login') }}" onsubmit="return false" autocomplete="off"> -->
 <form class="form"  method="POST" action="{{ url('login') }}" autocomplete="off">
     @csrf   
@@ -311,6 +310,4 @@
     </div>
 </form>
 <!-- <a href="{{ url('register') }}" class="btn btn--primary">Not a Student? </br> &nbsp; Enroll Here</a> -->
-</body>
-
-</html>
+@endsection
