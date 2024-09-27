@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Home Page|One Spot Education | Innovative learning for university students')
+
 @push('scripts')
   <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -66,10 +68,6 @@
       </div>
   </div>
 @endsection
-
-
-
-@section('title', 'Home Page|One Spot Education | Innovative learning for university students')
 
 
 @section('main-banner')
@@ -142,7 +140,6 @@
 
 @endsection
 
-
 @section('about')
 
   <section class="section why-us" data-section="section2" id="section2" >
@@ -207,11 +204,8 @@
 
 @endsection
 
-
-
 @section('courses')
-
-<section class="section courses" data-section="section4">
+  <section class="section courses" data-section="section4">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
@@ -367,9 +361,7 @@
       </div>
     </div>
   </section>
- @endsection
-
-
+@endsection
 
 @section('coming-soon')
   <section class="section coming-soon" data-section="section3" id="section3">

@@ -90,36 +90,27 @@
 
                 <!-- Include the role-specific navigation file -->
                 @include('partials.navigation.' . $roleName . '_nav')
-                @if ($isHomePage)
-                    <section class="home-section" style="padding-top:6% ;  min-height: auto;
-">
-                        <div class="home-content">
-                        <i class='bx bx-menu'></i>
-                        <span class="text">{{ ucfirst(Auth::user()->roles->pluck('role_name')->first()) }} : {{ Auth::user()->name }}</span>
-                        </div>
-                        @yield('content')
-                        @yield('user-dashboard-content')
-                    </section>
-                @else
-                    <section class="home-section" style="padding-top:6%">
-                        <div class="home-content">
-                        <i class='bx bx-menu'></i>
-                        <span class="text">{{ ucfirst(Auth::user()->roles->pluck('role_name')->first()) }} : {{ Auth::user()->name }}</span>
-                        </div>
-                        @yield('content')
-                        @yield('user-dashboard-content')
-                    </section>
-                @endif
+                <section class="home-section" >
+                    <div class="home-content">
+                    <i class='bx bx-menu'></i>
+                    <span class="text">{{ ucfirst(Auth::user()->roles->pluck('role_name')->first()) }} : {{ Auth::user()->name }}</span>
+                    </div>
+                    @yield('content')
+                    @yield('user-dashboard-content')
+                </section>
         </div>
-    @else
-
     
     @endif
     
     @yield('main-banner')
-    <div id="section-content" >
+    <div class="hassection">
+    @if(View::hasSection('content'))
+        <div id="section-content">
             @yield('content')
-    </div>
+        </div>
+    @endif
+</div>
+
     @yield('about')
     @yield('courses')
     @yield('all-courses')
