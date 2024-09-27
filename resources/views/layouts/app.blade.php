@@ -54,6 +54,17 @@
         width: auto; /* Maintain aspect ratio */
         display: block; /* Remove extra space below the image */
     }
+    #section-content{
+        min-height:92vh;
+        /* background-color: var(--color-tertiary); */
+        align-content:center;
+    }
+    header + *, header .main-banner {
+        padding-top: 78px;       
+        /* padding: 300px;  top:300px;      */
+        /* border:10px solid red; */
+    }
+
   </style>    
     <!-- Stack for additional CSS if needed -->
     @stack('head-css')
@@ -102,13 +113,13 @@
         </div>
     @else
 
-    <div style="padding-block:5%;">
-            @yield('content')
-        </div>
-
+    
     @endif
-
+    
     @yield('main-banner')
+    <div id="section-content" >
+            @yield('content')
+    </div>
     @yield('about')
     @yield('courses')
     @yield('all-courses')
