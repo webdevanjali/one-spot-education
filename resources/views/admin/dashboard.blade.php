@@ -4,7 +4,7 @@
 @section('title', 'Admin Dashboard')
 
 @section('user-dashboard-content')
-<div class="container text-center mt-5">
+  <div class="container text-center">
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-light ">
       <div class="container">

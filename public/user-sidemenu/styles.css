@@ -232,10 +232,9 @@
   background-color: inherit;
   padding-right:2%;
   border-radius: 0 45% 45% 0;
+  /* margin-top: 8% ; */
 }
-.home-content + * {
-  margin-top: 8% !important;
-}
+
 .home-section .home-content .bx-menu,
 .home-section .home-content .text {
   color: #11101d;

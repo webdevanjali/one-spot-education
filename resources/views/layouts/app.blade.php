@@ -60,9 +60,12 @@
         align-content:center;
     }
     header + *, header .main-banner {
-        padding-top: 78px;       
+        margin-top: 78px;      
         /* padding: 300px;  top:300px;      */
         /* border:10px solid red; */
+    }
+    .home-content + *{
+        padding-top: 3rem !important;
     }
 
   </style>    
@@ -104,12 +107,12 @@
     
     @yield('main-banner')
     <div class="hassection">
-    @if(View::hasSection('content'))
+    @if(View::hasSection('content') && Auth::check() === false)
         <div id="section-content">
             @yield('content')
         </div>
     @endif
-</div>
+    </div>
 
     @yield('about')
     @yield('courses')
