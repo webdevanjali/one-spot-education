@@ -201,6 +201,7 @@
         }
 
         .btn {
+        margin: 5%;
         position: relative;
         overflow: hidden;
         display: flex;
@@ -262,7 +263,7 @@
                 <form class="form"  method="POST" action="{{ url('login') }}" autocomplete="off">
                     @csrf   
                     <div class="form-inner">
-                        <h1>User Login</h1>
+                        <h1>Student/User Login</h1>
 
                         <div class="input-wrapper">
                             <label for="login-username">Email:</label>
@@ -311,7 +312,7 @@
                         <div class="btn-group">
                             <button type="submit" class="btn btn--primary">Login</button>
                             <!-- <a href="#0" class="btn--text">Forgot password?</a> -->
-                            <a href="{{ url('register') }}" class="btn btn--primary">Register</a>
+                            <a href="{{ url('register') }}" class="btn btn--primary">New Student? Register Here</a>
                         </div>
                     </div>
                 </form>
