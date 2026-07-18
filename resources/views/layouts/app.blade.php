@@ -73,7 +73,7 @@
     @stack('head-css')
 </head>
 
-<body>
+<body style="background: #e4e9f7;">
     <!-- Header -->
 
     @include('partials.navigation.guest_nav')
@@ -93,7 +93,7 @@
 
                 <!-- Include the role-specific navigation file -->
                 @include('partials.navigation.' . $roleName . '_nav')
-                <section class="home-section" >
+                <section class="home-section" style="padding-bottom: 60px; ">
                     <div class="home-content">
                     <i class='bx bx-menu'></i>
                     <span class="text">{{ ucfirst(Auth::user()->roles->pluck('role_name')->first()) }} : {{ Auth::user()->name }}</span>
@@ -121,11 +121,11 @@
  
 
     <!-- Footer -->
-    <footer>
+    <footer style="position: fixed; bottom: 0; left: 0; width: 100%;">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <p><i class="fa fa-copyright"></i> Copyright {{ date('Y') }} OneSpot Education. | All rights reserved.</p>
+                    <p class="p-1"><i class="fa fa-copyright"></i> Copyright {{ date('Y') }} OneSpot Education. | All rights reserved.</p>
                 </div>
             </div>
         </div>
