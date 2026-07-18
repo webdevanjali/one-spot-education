@@ -21,7 +21,7 @@ The system is architected using a modern product lifecycle framework, mapping a 
 ---
 
 ## 📸 Interface Previews
-*(Pro-Tip: Replace these placeholders with your actual local application screenshots or the static/GIF loops we planned!)*
+<!-- *(Pro-Tip: Replace these placeholders with your actual local application screenshots or the static/GIF loops we planned!)* -->
 
 | Administrative Command Dashboard | Student Course Management Grid |
 |---|---|
