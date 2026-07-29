@@ -284,7 +284,7 @@
                     data-css-selector="id_66">
                     <div id="cid_66" class="form-input-wide" data-layout="full"> <img alt="Image-66" loading="lazy"
                             class="form-image" style="border:0"
-                            src="Student%20Registration%20Form_files/Asset%2068@2x.639c70926ea1a9.95874275.png"
+                            src="logo/onespoteducation-high-resolution-logo.png"
                             height="50px" width="230px" data-component="image" role="none" aria-hidden="true"
                             tabindex="-1"> </div>
                 </li>

@@ -1,6 +1,6 @@
 
 services:
-  student-management:
+  One_Spot_Education:
     build:
       context: ./vendor/laravel/sail/runtimes/8.3
       dockerfile: Dockerfile
@@ -24,11 +24,11 @@ services:
     networks:
       - sail
     depends_on:
-      - smmysql
-      - smphpmyadmin
+      - osemysql
+      - osephpmyadmin
 
 
-  smmysql:
+  osemysql:
     image: 'mysql/mysql-server:8.0'
     ports:
       - '${FORWARD_DB_PORT:-3306}:3306'
@@ -53,12 +53,12 @@ services:
       retries: 3
       timeout: 5s
 
-  smphpmyadmin:
+  osephpmyadmin:
     image: 'phpmyadmin/phpmyadmin:5.2'
     ports:
       - '8081:80'  # Changed port to avoid conflict here i'm using the same for all my local projects using this image
     environment:
-      PMA_HOST: smmysql
+      PMA_HOST: osemysql
       PMA_PORT: 3306
     networks:
       - sail
