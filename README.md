@@ -15,7 +15,7 @@ A centralized educational enterprise portal designed to unify academic workflows
 The system is architected using a modern product lifecycle framework, mapping a comprehensive ecosystem alongside a production-ready application core.
 
 * **Phase 3 North Star Vision (SRS Document):** Formulates the macro-architectural requirements for automated admissions, live web-streaming instances, real-time WebSockets communication, and automated matrix grading.
-  👉 **[Read the Full System Architecture Specification](./docs/OneSpot_Architecture_SRS.pdf)**
+  👉 **[Read the Full System Architecture Specification](./docs/OneSpotEducationw_Architecture_SRS.pdf)**
 * **Current Implementation (Phase 1 MVP):** Focuses heavily on strict relational database structures, dynamic multi-theme execution nodes, and a custom multi-tenant permission security framework.
 
 ---
